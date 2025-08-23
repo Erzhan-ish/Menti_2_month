@@ -1,16 +1,21 @@
-class Rectangle:
-    def __init__(self, width, height):
-        self.width = width
-        self.height = height
+"""
+Библиотека: colorama
+Зачем нужна:
+- Делает вывод в консоли цветным (текст/фон).
+- Полезно для красивых логов и CLI-приложений.
+"""
+from colorama import Fore, Back, Style, init
 
-    def __str__(self):
-        return f"Rectangle: ширина={self.width}, высота={self.height}"
+# Инициализация colorama (нужна на Windows, на Linux/macOS работает сразу)
+init(autoreset=True)
 
-    def __add__(self, other):
-        return Rectangle(self.width + other.width, self.height + other.height)
+def demo_colors():
+    print(Fore.RED + "красный текст")
+    print(Fore.GREEN + "зелёный текст")
+    print(Fore.BLUE + "синий текст")
+    print(Back.YELLOW + Fore.BLACK + "Чёрный текст на жёлтом фоне")
+    print(Style.BRIGHT + "Яркий стиль текста")
+    print("Обычный текст (после autoreset)")
 
 
-r1 = Rectangle(8, 15)
-r2 = Rectangle(6, 12)
-r3 = r1 + r2
-print(r3)
+demo_colors()
